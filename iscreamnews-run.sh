@@ -6,7 +6,7 @@ readonly PROC_NAME="iscreamnews-app"
 # jar 파일 복사
 FILE_NAME="$(ls ../iscreamnews)"
 echo ${FILE_NAME}
-readonly DAEMON="/home/sigongweb/apps/${FILE_NAME}"
+readonly DAEMON="/home/sigongweb/apps/iscreamnews/${FILE_NAME}"
 
 # 프로세스 아이디가 존재할 패스를 설정
 readonly PID_PATH="/home/sigongweb/iscreamnews/bin/"
