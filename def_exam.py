@@ -4,6 +4,6 @@ def add(a, b):
 
 FIRST = 1
 SECOND = 2
-SUM = add(FIRST,SECOND)
-print(SUM)
+# SUM = add(FIRST,SECOND)
+# print(SUM)
 print(add(FIRST,SECOND))

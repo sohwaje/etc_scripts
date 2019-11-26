@@ -1,11 +1,11 @@
 #!/bin/bash
 # written by jinkwon on 2018.05.18
 # 프로세스 명을 명시한다.
-readonly PROC_NAME="hiclass-file"
-# jar 파일
-FILE_NAME="$(ls ../file )"
+readonly PROC_NAME="hiclass-test"
+# jar 파일 복사
+FILE_NAME="$(ls ../test )"
 echo ${FILE_NAME}
-readonly DAEMON="/home/sigongweb/apps/file/${FILE_NAME}"
+readonly DAEMON="/home/sigongweb/apps/test/${FILE_NAME}"
 # 프로세스 아이디가 존재할 패스를 설정
 readonly PID_PATH="/home/sigongweb/apps/bin/"
 readonly PROC_PID="${PID_PATH}${PROC_NAME}.pid"
@@ -20,7 +20,7 @@ start()
         echo "${PROC_NAME} is already running"
         exit 0
     fi
-    nohup java -jar -XX:MaxMetaspaceSize=512m -XX:MetaspaceSize=256m -Xms1024m -Xmx1024m -Dscouter.config="/home/sigongweb/work/agent.java/conf/file.conf" -javaagent:"/home/sigongweb/work/agent.java/scouter.agent.jar" -Dobj_name="file01" "${DAEMON}" > /dev/null 2>&1 &
+    nohup java -jar -XX:MaxMetaspaceSize=512m -XX:MetaspaceSize=256m -Xms1024m -Xmx1024m "${DAEMON}" > /dev/null 2>&1 &
     local PID=${!}
 
     if [ -n ${PID} ]; then
