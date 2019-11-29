@@ -1,5 +1,5 @@
 #!/bin/sh
-#20191129
+#20191129 update
 # 프로세스 명을 명시한다.
 readonly PROC_NAME="iscreamnews-app"
 
