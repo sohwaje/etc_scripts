@@ -1,15 +1,13 @@
-#!/bin/sh
-#20191129 update
+#!/bin/bash
+
 # 프로세스 명을 명시한다.
-readonly PROC_NAME="iscreamnews-app"
-
+# readonly PROC_NAME="iscreamnews"
 # jar 파일 복사
-FILE_NAME="$(ls ../iscreamnews)"
-echo ${FILE_NAME}
-readonly DAEMON="/home/sigongweb/apps/iscreamnews/${FILE_NAME}"
-
+PROC_NAME="$(ls ../iscreamnews )"
+echo ${PROC_NAME}
+readonly DAEMON="/home/sigongweb/apps/iscreamnews/${PROC_NAME}"
 # 프로세스 아이디가 존재할 패스를 설정
-readonly PID_PATH="/home/sigongweb/iscreamnews/bin/"
+readonly PID_PATH="/home/sigongweb/apps/bin/"
 readonly PROC_PID="${PID_PATH}${PROC_NAME}.pid"
 
 # 시작 함수
@@ -32,7 +30,6 @@ start()
         echo " - failed to start."
     fi
 }
-
 # 중지
 stop()
 {
@@ -47,7 +44,6 @@ stop()
         echo " - Shutdown ...."
     fi
 }
-
 # 상태
 status()
 {
