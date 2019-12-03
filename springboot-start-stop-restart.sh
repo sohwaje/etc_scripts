@@ -17,7 +17,7 @@ start()
         echo "${PROC_NAME} is already running"
         exit 0
     fi
-    nohup java -jar -XX:MaxMetaspaceSize=512m -XX:MetaspaceSize=256m -Xms1024m -Xmx1024m -Dspring.profiles.active=dev "${DAEMON}" > /dev/null 2>&1 &
+    nohup java -jar -XX:MaxMetaspaceSize=512m -XX:MetaspaceSize=256m -Xms1024m -Xmx1024m "${DAEMON}" > /dev/null 2>&1 &
     local PID=${!}
 
     if [ -n ${PID} ]; then
