@@ -1,14 +1,28 @@
 #!/bin/sh
-#hi-class-api
-APIPID=$(ps -ef | grep hi-class-api | grep -v grep | awk '{print $2}')
-CHATPID=$(ps -ef | grep hi-class-chat | grep -v grep | awk '{print $2}')
-OAUTH2PID=$(ps -ef | grep hi-class-oauth2 | grep -v grep | grep -v hi-class-oauth2-client | awk '{print $2}')
-OAUTH2CLIENTPID=$(ps -ef | grep hi-class-oauth2-client | grep -v grep | awk '{print $2}')
-ADMINPID=$(ps -ef | grep hi-class-ui-admin | grep -v grep | awk '{print $2}')
-FILEPID=$(ps -ef | grep hi-class-file | grep -v grep | awk '{print $2}')
-CRAWLERPID=$(ps -ef | grep hi-class-crawler | grep -v grep | awk '{print $2}')
-UIPID=$(ps -ef | grep hi-class-ui | grep -v grep | grep -v hi-class-ui-admin | awk '{print $2}')
+# [1]app의 홈디렉토리
+APP_HOME=/home/sigongweb/apps
 
+# [2]app 이름
+API_NAME="$(ls ${APP_HOME}/api)"
+CHAT_NAME="$(ls ${APP_HOME}/chat)"
+OAUTH2_NAME="$(ls ${APP_HOME}/oauth2)"
+OAUTH2CLIENT_NAME="$(ls ${APP_HOME}/oauth2client)"
+ADMIN_NAME="$(ls ${APP_HOME}/admin)"
+FILE_NAME="$(ls ${APP_HOME}/file)"
+CRAWLER_NAME="$(ls ${APP_HOME}/crawler)"
+UI_NAME="$(ls ${APP_HOME}/front)"
+
+# [3]app이름으로 PID 찾는다.
+APIPID=$(ps -ef | grep $API_NAME | grep -v grep | awk '{print $2}')
+CHATPID=$(ps -ef | grep $CHAT_NAME | grep -v grep | awk '{print $2}')
+OAUTH2PID=$(ps -ef | grep $OAUTH2_NAME | grep -v grep | awk '{print $2}')
+OAUTH2CLIENTPID=$(ps -ef | grep $OAUTH2CLIENT_NAME | grep -v grep | awk '{print $2}')
+ADMINPID=$(ps -ef | grep $ADMIN_NAME | grep -v grep | awk '{print $2}')
+FILEPID=$(ps -ef | grep $FILE_NAME | grep -v grep | awk '{print $2}')
+CRAWLERPID=$(ps -ef | grep $CRAWLER_NAME | grep -v grep | awk '{print $2}')
+UIPID=$(ps -ef | grep UI_NAME | grep -v grep | awk '{print $2}')
+
+# [4] APP의 PID의 메모리와 CPU 사용률
 COUNT=10
 while :
 do
