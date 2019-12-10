@@ -2,7 +2,7 @@
 #[1] WAR 홈, 소스 홈 지정
 WAR_HOME="/home/sigongweb/apps/war"
 SOURCE_HOME="/home/sigongweb/apps/source"
-WAR_NAME="$(ls ..$WAR_HOME)"
+WAR_NAME="$(ls $WAR_HOME)"
 
 #[2] war 파일 압축 풀기
 if [ ! -f ${WAR_HOME}/${WAR_NAME} ]; then
