@@ -11,7 +11,7 @@ if [ ! -f ${WAR_HOME}/${WAR_NAME} ]; then
 else
   echo "${WAR_HOME}에 ${WAR_NAME}가 있습니다."
   echo "압축을 풉니다."
-  cd $WAR_HOME
+  cd $SOURCE_HOME
   jar -xvf ${WAR_HOME}/${WAR_NAME}
 fi
 
