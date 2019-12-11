@@ -33,7 +33,7 @@ do
 # API
 if [ -z $APIPID ]
 then
-  echo "Hi-class-api 앱이 없음"
+  echo ""
 else
   echo "========================================"
   echo "API:" $(ps -p $APIPID -o %cpu)
@@ -45,7 +45,7 @@ fi
 # CHAT
 if [ -z $CHATPID ]
 then
-  echo "hi-class-chat 앱이 없음"
+  echo ""
 else
   echo "========================================"
   echo "CHAT:" $(ps -p $CHATPID -o %cpu)
@@ -56,7 +56,7 @@ fi
 # OAUTH2
 if [ -z $OAUTH2PID ]
 then
-  echo "hi-class-oauth2 앱이 없음"
+  echo ""
 else
   echo "========================================"
   echo "oauth2:" $(ps -p $OAUTH2PID -o %cpu)
@@ -68,7 +68,7 @@ fi
 # OAUTH2-CLIENT
 if [ -z $OAUTH2CLIENTPID ]
 then
-  echo "hi-class-oauth2-client 앱이 없음"
+  echo ""
 else
   echo "========================================"
   echo "oauth2-client:" $(ps -p $OAUTH2CLIENTPID -o %cpu)
@@ -80,7 +80,7 @@ fi
 # admin-ui
 if [ -z $ADMINPID ]
 then
-  echo "hi-class-ui-admin 앱이 없음"
+  echo ""
 else
   echo "========================================"
   echo "admin:" $(ps -p $ADMINPID -o %cpu)
@@ -92,7 +92,7 @@ fi
 # file
 if [ -z $FILEPID ]
 then
-  echo "hi-class-file 앱이 없음"
+  echo ""
 else
   echo "========================================"
   echo "file:" $(ps -p $FILEPID -o %cpu)
@@ -104,7 +104,7 @@ fi
 # crawler
 if [ -z $CRAWLERPID ]
 then
-  echo "hi-class-crawler 앱이 없음"
+  echo ""
 else
   echo "========================================"
   echo "crawler:" $(ps -p $CRAWLERPID -o %cpu)
@@ -116,11 +116,11 @@ fi
 # front-ui
 if [ -z $UIPID ]
 then
-  echo "hi-class-ui 앱이 없음"
+  echo ""
 else
   echo "========================================"
-  echo "front:" $(ps -p $UIPID -o %cpu)
-  echo "front:" $(ps -p $UIPID -o %mem)
+  echo "ui:" $(ps -p $UIPID -o %cpu)
+  echo "ui:" $(ps -p $UIPID -o %mem)
   echo "========================================"
   echo
 fi
