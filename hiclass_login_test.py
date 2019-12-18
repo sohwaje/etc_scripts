@@ -15,13 +15,14 @@ class MyCookiePolicyHandler(CookiePolicyHandler):
 CookieModule.setCookiePolicyHandler(MyCookiePolicyHandler())
 
 test1 = Test(1, "checkout home")
-request1 = test1.wrap(HTTPRequest(url="http://my.site.com"))
+request1 = test1.record(HTTPRequest(url="http://my.site.com"))
+# HTTPPluginControl.followRedirects = True
 class TestRunner:
     def __init__(self):
         # Login URL
         request = HTTPRequest(url="https://login.site.com")
         ##### reset to the all cookies #####
-        threadContext = HTTPPluginControl.getThreadHTTPClientContext() 
+        threadContext = HTTPPluginControl.getThreadHTTPClientContext()
         self.cookies = CookieModule.listAllCookies(threadContext)
         for c in self.cookies: CookieModule.removeCookie(c, threadContext)
 
