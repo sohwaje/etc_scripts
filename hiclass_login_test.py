@@ -15,19 +15,19 @@ class MyCookiePolicyHandler(CookiePolicyHandler):
 CookieModule.setCookiePolicyHandler(MyCookiePolicyHandler())
 
 test1 = Test(1, "checkout home")
-request1 = test1.record(HTTPRequest(url="http://my.site.com"))
+request1 = test1.record(HTTPRequest(url="https://iscream-oauth2.hiclass.net"))
 # HTTPPluginControl.followRedirects = True
 class TestRunner:
     def __init__(self):
         # Login URL
-        request = HTTPRequest(url="https://login.site.com")
+        request = HTTPRequest(url="https://iscream-oauth2.hiclass.net")
         ##### reset to the all cookies #####
         threadContext = HTTPPluginControl.getThreadHTTPClientContext()
         self.cookies = CookieModule.listAllCookies(threadContext)
         for c in self.cookies: CookieModule.removeCookie(c, threadContext)
 
         # do login
-        request.POST("/login/do", ( NVPair("id", "my_id"),NVPair("pw", "my_passwd")));
+        request.POST("/login", ( NVPair("id", "my_id"),NVPair("kisssulran", "shee0828!")));
         ##### save to the login info in cookies #####
         self.cookies = CookieModule.listAllCookies(threadContext)
 
@@ -38,7 +38,7 @@ class TestRunner:
         for c in self.cookies: CookieModule.addCookie(c,threadContext)
 
         ##### Request with login #####
-        result = request1.GET("/mypage")
+        result = request1.GET("/main/intro")
 
         if result.text.count("only my content data") < 0:
             grinder.statistics.forLastTest.success = 0
