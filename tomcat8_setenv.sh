@@ -2,14 +2,15 @@
 export DATE=`date +%Y%m%d_%H%M%S`
 
 # Tomcat 환경 설정
-export JAVA_HOME=/usr/java/jdk1.8.0_152
+export JAVA_HOME=/home/sigongweb/jdk1.8.0_91
 export SERVER_NAME=instance01
 export CATALINA_HOME=/home/sigongweb/tomcat8
 export CATALINA_BASE=/home/sigongweb/instance/${SERVER_NAME}
 export PORT_OFFSET=100
-export SCOUTER_AGENT_DIR="/home/obj1/scouter/agent.java"
+#export SCOUTER_AGENT_DIR="/home/obj1/scouter/agent.java"
 
 # Tomcat log 설정
+# mkdir -p ${LOG_BASE}/log, ${LOG_BASE}/gclog ${LOG_BASE}/heaplog
 export LOG_BASE=${CATALINA_BASE}/logs
 export LOG_DIR=${LOG_BASE}/log
 export GC_LOG_DIR=${LOG_BASE}/gclog
@@ -22,29 +23,34 @@ export AJP_PORT=$(expr 8009 + $PORT_OFFSET)
 export SSL_PORT=$(expr 8443 + $PORT_OFFSET)
 export SHUTDOWN_PORT=$(expr 8005 + $PORT_OFFSET)
 
-# Tomcat JVM Options
-if [ "x$JAVA_OPTS" = "x" ]; then
-  JAVA_OPTS="$JAVA_OPTS -Xms2048m -Xmx2048m"
-  JAVA_OPTS="$JAVA_OPTS -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=256m"
-  JAVA_OPTS="$JAVA_OPTS -XX:+UseG1GC"
-  JAVA_OPTS="$JAVA_OPTS -XX:+UnlockDiagnosticVMOptions"
-  JAVA_OPTS="$JAVA_OPTS -XX:+G1SummarizeConcMark"
-  JAVA_OPTS="$JAVA_OPTS -XX:InitiatingHeapOccupancyPercent=35"
+# Tomcat Threads 설정
+export JAVA_OPTS="$JAVA_OPTS -DmaxThreads=100"
+export JAVA_OPTS="$JAVA_OPTS -DminSpareThreads=50"
+export JAVA_OPTS="$JAVA_OPTS -DacceptCount=10"
+export JAVA_OPTS="$JAVA_OPTS -DmaxKeepAliveRequests=-1"
+export JAVA_OPTS="$JAVA_OPTS -DconnectionTimeout=30000"
 
-  JAVA_OPTS="-server"
-  JAVA_OPTS="$JAVA_OPTS -Dserver=$SERVER_NAME"
-  JAVA_OPTS="$JAVA_OPTS -Dtomcat.port.http=$HTTP_PORT"
-  JAVA_OPTS="$JAVA_OPTS -Dtomcat.port.ajp=$AJP_PORT"
-  JAVA_OPTS="$JAVA_OPTS -Dtomcat.port.https=$SSL_PORT"
-  JAVA_OPTS="$JAVA_OPTS -Dtomcat.port.shutdown=$SHUTDOWN_PORT"
-  JAVA_OPTS="$JAVA_OPTS -Djava.library.path=$CATALINA_HOME/lib/"
-  JAVA_OPTS="$JAVA_OPTS -verbose:gc"
-  JAVA_OPTS="$JAVA_OPTS -Xloggc:${GC_LOG_DIR}/gc.log"
-  JAVA_OPTS="$JAVA_OPTS -XX:+PrintGCDetails"
-  JAVA_OPTS="$JAVA_OPTS -XX:+PrintGCTimeStamps"
-  JAVA_OPTS="$JAVA_OPTS -XX:+HeapDumpOnOutOfMemoryError"
-  JAVA_OPTS="$JAVA_OPTS -XX:HeapDumpPath=${HEAP_DUMP_DIR}/java_pid.hprof"
-fi
+# Tomcat JVM Options
+export  JAVA_OPTS="$JAVA_OPTS -Xms512m -Xmx512m"
+export  JAVA_OPT=S"$JAVA_OPTS -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=256m"
+export  JAVA_OPTS="$JAVA_OPTS -XX:+UseG1GC"
+export  JAVA_OPTS="$JAVA_OPTS -XX:+UnlockDiagnosticVMOptions"
+export  JAVA_OPTS="$JAVA_OPTS -XX:+G1SummarizeConcMark"
+export  JAVA_OPTS="$JAVA_OPTS -XX:InitiatingHeapOccupancyPercent=35"
+
+export  JAVA_OPTS="-server"
+export  JAVA_OPTS="$JAVA_OPTS -Dserver=$SERVER_NAME"
+export  JAVA_OPTS="$JAVA_OPTS -Dhttp.port=$HTTP_PORT"
+export  JAVA_OPTS="$JAVA_OPTS -Dajp.port=$AJP_PORT"
+export  JAVA_OPTS="$JAVA_OPTS -Dssl.port=$SSL_PORT"
+export  JAVA_OPTS="$JAVA_OPTS -Dshutdown.port=$SHUTDOWN_PORT"
+export  JAVA_OPTS="$JAVA_OPTS -Djava.library.path=$CATALINA_HOME/lib/"
+export  JAVA_OPTS="$JAVA_OPTS -verbose:gc"
+export  JAVA_OPTS="$JAVA_OPTS -Xloggc:${GC_LOG_DIR}/gc.log"
+export  JAVA_OPTS="$JAVA_OPTS -XX:+PrintGCDetails"
+export  JAVA_OPTS="$JAVA_OPTS -XX:+PrintGCTimeStamps"
+export  JAVA_OPTS="$JAVA_OPTS -XX:+HeapDumpOnOutOfMemoryError"
+export  JAVA_OPTS="$JAVA_OPTS -XX:HeapDumpPath=${HEAP_DUMP_DIR}/java_pid.hprof"
 
 # Tomcat JMX monitoring
 #export CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote=true"
@@ -62,9 +68,9 @@ fi
 #export JAVA_OPTS="$JAVA_OPTS -Djava.rmi.server.hostname=1.209.6.225"
 
 # Scouter
-export JAVA_OPTS="${JAVA_OPTS} -javaagent:${SCOUTER_AGENT_DIR}/scouter.agent.jar"
-export JAVA_OPTS="${JAVA_OPTS} -Dscouter.config=${SCOUTER_AGENT_DIR}/conf/${SERVER_NAME}.conf"
-export JAVA_OPTS="${JAVA_OPTS} -Dobj_name=${SERVER_NAME}"
+#export JAVA_OPTS="${JAVA_OPTS} -javaagent:${SCOUTER_AGENT_DIR}/scouter.agent.jar"
+#export JAVA_OPTS="${JAVA_OPTS} -Dscouter.config=${SCOUTER_AGENT_DIR}/conf/${SERVER_NAME}.conf"
+#export JAVA_OPTS="${JAVA_OPTS} -Dobj_name=${SERVER_NAME}"
 
 export JAVA_OPTS
 
