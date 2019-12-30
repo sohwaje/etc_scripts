@@ -44,6 +44,7 @@ if [ "x$JAVA_OPTS" = "x" ]; then
   JAVA_OPTS="$JAVA_OPTS -XX:+PrintGCTimeStamps"
   JAVA_OPTS="$JAVA_OPTS -XX:+HeapDumpOnOutOfMemoryError"
   JAVA_OPTS="$JAVA_OPTS -XX:HeapDumpPath=${HEAP_DUMP_DIR}/java_pid.hprof"
+fi
 
 # Tomcat JMX monitoring
 #export CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote=true"
