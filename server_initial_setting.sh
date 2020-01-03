@@ -68,6 +68,7 @@ set_crontab_setting() {
   echo "crontab setting"
   (crontab -l 2>/dev/null; echo "0 0 * * * rdate -s time.bora.net; hwclock -w") | crontab -
   (crontab -l 2>/dev/null; echo "0 2 * * * sync && echo 3 > /proc/sys/vm/drop_caches") | crontab -
+  systemctl restart crond
   sleep 1
   echo "Done"
 }
