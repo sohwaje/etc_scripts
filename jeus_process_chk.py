@@ -4,13 +4,13 @@ import logging
 mylogger = logging.getLogger("python-daemon")
 mylogger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-file_handler = logging.FileHandler('/var/log/python.log')
+file_handler = logging.FileHandler('/var/log/python2.log')
 file_handler.setFormatter(formatter)
 mylogger.addHandler(file_handler)
 """
 서버 라벨 설정
 """
-serverName = '222.231.26.207'
+serverName = '222.231.26.208'
 title = '[' + serverName + ']\n'
 
 """
@@ -24,7 +24,7 @@ bot = telegram.Bot(token = sigong_token)
 감시 대상 프로세스 및 인스턴스
 """
 process = "java"
-instances =['-Discream', '-Discream_mobile', '-Dnote']
+instances =['-Dtkbell', '-Daspen', '-Dthce']
 
 """
 메시지 전송 설정
