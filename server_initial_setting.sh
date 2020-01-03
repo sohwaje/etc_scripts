@@ -87,8 +87,9 @@ set_sysctl() {
   echo "swapoff -a" >> /etc/rc.local
   echo "echo 0 > /proc/sys/vm/swappiness" >> /etc/rc.local
   echo "modprobe ip_conntrack" >> /etc/rc.local
+  echo "vm.overcommit_memory=1" >> /etc/sysctl.conf
   echo "fs.file-max=10000000" >> /etc/sysctl.conf
-  echo "sysctl -w net.core.somaxconn=65535" >> /etc/sysctl.conf
+  echo "net.core.somaxconn=65535" >> /etc/sysctl.conf
   echo "net.core.netdev_max_backlog=16777216" >> /etc/sysctl.conf
   echo "net.core.rmem_max=134217728" >> /etc/sysctl.conf
   echo "net.core.wmem_max=134217728" >> /etc/sysctl.conf
