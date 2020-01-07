@@ -33,96 +33,104 @@ do
 # API
 if [ -z $APIPID ]
 then
-  echo ""
+  echo "========================================"
+  echo "API: Not Found"
+  echo "========================================"
 else
   echo "========================================"
   echo "API:" $(ps -p $APIPID -o %cpu)
   echo "API:" $(ps -p $APIPID -o %mem)
   echo "========================================"
-  echo
 fi
 
 # CHAT
 if [ -z $CHATPID ]
 then
-  echo ""
+  echo "========================================"
+  echo "CHAT: Not Found"
+  echo "========================================"
 else
   echo "========================================"
   echo "CHAT:" $(ps -p $CHATPID -o %cpu)
   echo "CHAT:" $(ps -p $CHATPID -o %mem)
   echo "========================================"
-  echo
 fi
 # OAUTH2
 if [ -z $OAUTH2PID ]
 then
-  echo ""
+  echo "========================================"
+  echo "OAUTH2: Not Found"
+  echo "========================================"
 else
   echo "========================================"
-  echo "oauth2:" $(ps -p $OAUTH2PID -o %cpu)
-  echo "oauth2:" $(ps -p $OAUTH2PID -o %mem)
+  echo "OAUTH2:" $(ps -p $OAUTH2PID -o %cpu)
+  echo "OAUTH2:" $(ps -p $OAUTH2PID -o %mem)
   echo "========================================"
-  echo
 fi
 
 # OAUTH2-CLIENT
 if [ -z $OAUTH2CLIENTPID ]
 then
-  echo ""
+  echo "========================================"
+  echo "OAUTH2-CLIENT: Not Found"
+  echo "========================================"
 else
   echo "========================================"
-  echo "oauth2-client:" $(ps -p $OAUTH2CLIENTPID -o %cpu)
-  echo "oauth2-client:" $(ps -p $OAUTH2CLIENTPID -o %mem)
+  echo "OAUTH2-CLIENT:" $(ps -p $OAUTH2CLIENTPID -o %cpu)
+  echo "OAUTH2-CLIENT:" $(ps -p $OAUTH2CLIENTPID -o %mem)
   echo "========================================"
-  echo
 fi
 
 # admin-ui
 if [ -z $ADMINPID ]
 then
-  echo ""
+  echo "========================================"
+  echo "UI-ADMIN: Not Found"
+  echo "========================================"
 else
   echo "========================================"
-  echo "admin:" $(ps -p $ADMINPID -o %cpu)
-  echo "admin:" $(ps -p $ADMINPID -o %mem)
+  echo "UI-ADMIN:" $(ps -p $ADMINPID -o %cpu)
+  echo "UI-ADMIN:" $(ps -p $ADMINPID -o %mem)
   echo "========================================"
-  echo
 fi
 
 # file
 if [ -z $FILEPID ]
 then
-  echo ""
+  echo "========================================"
+  echo "FILE: Not Found"
+  echo "========================================"
 else
   echo "========================================"
-  echo "file:" $(ps -p $FILEPID -o %cpu)
-  echo "file:" $(ps -p $FILEPID -o %mem)
+  echo "FILE:" $(ps -p $FILEPID -o %cpu)
+  echo "FILE:" $(ps -p $FILEPID -o %mem)
   echo "========================================"
-  echo
 fi
 
 # crawler
 if [ -z $CRAWLERPID ]
 then
-  echo ""
+  echo "========================================"
+  echo "CRAWLER: Not Found"
+  echo "========================================"
 else
   echo "========================================"
-  echo "crawler:" $(ps -p $CRAWLERPID -o %cpu)
-  echo "crawler:" $(ps -p $CRAWLERPID -o %mem)
+  echo "CRAWLER:" $(ps -p $CRAWLERPID -o %cpu)
+  echo "CRAWLER:" $(ps -p $CRAWLERPID -o %mem)
   echo "========================================"
-  echo
 fi
 
 # front-ui
 if [ -z $UIPID ]
 then
-  echo ""
+  echo "========================================"
+  echo "UI: Not Found"
+  echo "========================================"
 else
   echo "========================================"
-  echo "ui:" $(ps -p $UIPID -o %cpu)
-  echo "ui:" $(ps -p $UIPID -o %mem)
+  echo "UI:" $(ps -p $UIPID -o %cpu)
+  echo "UI:" $(ps -p $UIPID -o %mem)
   echo "========================================"
-  echo
 fi
 sleep 2
 done
