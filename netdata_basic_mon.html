@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>성능 모니터링</title>
+         <meta name="application-name" content="netdata">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:image" content="https://my-netdata.io/images/seo-performance-512.png"/>
+        <meta property="og:url" content="http://my-netdata.io/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:site_name" content="netdata"/>
+        <meta property="og:title" content="실시간 성능 모니터링!"/>
+        <meta property="og:description" content="Stunning real-time dashboards, blazingly fast and extremely interactive. Zero configuration, zero dependencies, zero maintenance." />
+
+</head>
+<script>
+var netdataTheme = 'default'; // this is dark
+var netdataServer = 'http://10.1.5.5:19999/';
+</script>
+
+<script type="text/javascript" src="http://10.1.5.5:19999/dashboard.js"></script>
+
+<script>
+
+NETDATA.options.current.destroy_on_hide = true;
+NETDATA.options.current.eliminate_zero_dimensions = true;
+
+NETDATA.options.current.concurrent_refreshes = false;
+
+NETDATA.options.current.parallel_refresher = true;
+
+NETDATA.options.current.stop_updates_when_focus_is_lost = false;
+
+var RELOAD_EVERY = 5;
+setTimeout(function(){
+    location.reload();
+}, RELOAD_EVERY * 60 * 1000);
+</script>
+
+<style>
+    body {
+        font-size: 1vw;
+    }
+
+    .mysparkline {
+        position: relative;
+        display: inline-block;
+        min-height: 50px;
+        width: 100%;
+        height: 7vmax;
+        text-align: left;
+    }
+
+    .mysparkline-overchart-label {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 10px;
+        bottom: 0;
+        right: 0;
+        font-size: 1vmax;
+        z-index: 1;
+    }
+
+    .mysparkline-overchart-value {
+        position: absolute;
+        display: block;
+        top: 1.1vmax;
+        left: 10px;
+        bottom: 0;
+        right: 0;
+        font-size: 5vmax;
+        z-index: 2;
+        text-shadow: #333 0px 0px 2px;
+    }
+
+    .myfullchart {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: 12vmax;
+        min-height: 150px;
+        text-align: left;
+    }
+
+    .mygauge-combo {
+        display: inline-block;
+    }
+
+    .mygauge {
+        position: relative;
+        display: block;
+        width: 18vw;
+        height: 11vw;
+    }
+
+    .mygauge-button {
+        display: block;
+    }
+
+    .mytitle {
+        padding-top: 6vw;
+        padding-bottom: 1vw;
+        text-align: center;
+        font-size: 2.4vw;
+    }
+
+    .mysubtitle {
+        padding-top: 2vw;
+        padding-bottom: 1vw;
+        text-align: center;
+        font-size: 1.8vw;
+    }
+
+    .mycontent {
+        text-align: center;
+        font-size: 1.5vw;
+    }
+
+    @media only screen and (min-width : 992px) {
+        .container {
+            width: 80%;
+        }
+    }
+    @media only screen and (max-width : 992px) {
+        .container {
+            width: 100%;
+        }
+    }
+</style>
+
+<br>
+<div style="width: 100%; text-align: center; display: inline-block;">
+<div style="width: 100%; height: 24vh; text-align: center; display: inline-block;">
+<b><font size=6pt>CPU 실시간 모니터링</font></b>
+
+                                <div data-netdata="system.cpu"
+                                data-title="CPU utilization"
+                                data-units="percentage"
+                                data-chart-library="dygraph"
+                                ></div>
+</div>
+
+<br>
+<br>
+<br>
+<b><font size=6pt>Memory(%) 실시간 모니터링</font></b>
+<div style="width: 100%; height: 24vh; text-align: center; display: inline-block;">
+<div style="width: 100%; height: 15px; text-align: center; display: inline-block;">
+
+
+                                        <div data-netdata="system.ram"
+                                        data-append-options="percentage"
+                                        data-title="Free"
+                                        data-easypiechart-max-value="100"
+                                        data-dimensions="free"
+                                        data-colors="#00FF00"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-append-options="percentage"
+                                        data-easypiechart-max-value="100"
+                                        data-title="Used"
+                                        data-dimensions="used"
+                                        data-colors="#FFFF00"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-append-options="percentage"
+                                        data-easypiechart-max-value="100"
+                                        data-title="Cached"
+                                        data-dimensions="cached"
+                                        data-colors="#81F79F"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-append-options="percentage"
+                                        data-easypiechart-max-value="100"
+                                        data-title="buffers"
+                                        data-dimensions="buffers"
+                                        data-colors="#FFFFCC"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="mem.kernel"
+                                        data-append-options="percentage"
+                                        data-easypiechart-max-value="100"
+                                        data-title="Kernel Slab"
+                                        data-dimensions="Slab"
+                                        data-colors="#5858FA"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="mem.slab"
+                                        data-append-options="percentage"
+                                        data-easypiechart-max-value="100"
+                                        data-title="Reclaimable"
+                                        data-dimensions="reclaimable"
+                                        data-colors="#8258FA"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="mem.slab"
+                                        data-append-options="percentage"
+                                        data-easypiechart-max-value="100"
+                                        data-title="unreclaimable"
+                                        data-dimensions="unreclaimable"
+                                        data-colors="#BCA9F5"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+
+</div>
+
+</div>
+<br>
+<div style="width: 100%; height: 24vh; text-align: center; display: inline-block;">
+<div style="width: 100%; height: 15px; text-align: center; display: inline-block;">
+ <b><font size=6pt> 디스크 사용량 </font></b>
+<br>
+<br>
+
+                                        <div data-netdata="disk_space._"
+                                        data-title="사용량(/)"
+                                        data-easypiechart-max-value="50"
+                                        data-dimensions="used"
+                                        data-colors="#CD1039"
+                                        data-units="GiB"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="15%"
+                                        ></div>
+
+                                        <div data-netdata="disk_space._"
+                                        data-title="여유(/)"
+                                        data-easypiechart-max-value="50"
+                                        data-dimensions="avail"
+                                        data-colors="#00FF00"
+                                        data-units="GiB"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="15%"
+                                        ></div>
+
+                                        <div data-netdata="disk_space._mnt_resource"
+                                        data-title="사용량(/mnt/resource)"
+                                        data-easypiechart-max-value="500"
+                                        data-dimensions="used"
+                                        data-colors="#CD1039"
+                                        data-units="GB"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="15%"
+                                        ></div>
+
+                                        <div data-netdata="disk_space._mnt_pushstorageaccount"
+                                        data-title="여유(/pushstorageaccount)"
+                                        data-easypiechart-max-value="500"
+                                        data-dimensions="avail"
+                                        data-colors="#00FF00"
+                                        data-units="GB"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="15%"
+                                        ></div>
+
+
+</div>
+</body>
+</html>
