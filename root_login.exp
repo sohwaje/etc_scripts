@@ -31,7 +31,7 @@ expect -re "No route" {
             send "sudo -s\r"
      }
 expect ":" { send "$ROOT_PASSWORD\r" }
-sleep 1
+
 # root 로그인 후 실행시킬 명령어
 send "echo 'helloooo'\r"
 
