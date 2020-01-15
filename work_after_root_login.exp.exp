@@ -32,10 +32,10 @@ expect -re "No route" {
      }
 expect ":" { send "$ROOT_PASSWORD\r" }
 
-# root 로그인 후 실행시킬 명령어
+# [1] root 로그인 후 실행시킬 명령어
 expect "]" { send "echo '######################helloooo'######################'\r" }
 
-# 명령어가 실행된 후 자동으로 로그아웃
+# [2] 명령어가 실행된 후 자동으로 로그아웃
 expect "]" { send "exit\r" }
 expect ">" { send "exit\r" }
 interact
