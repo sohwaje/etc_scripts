@@ -1,0 +1,41 @@
+#!/usr/bin/expect
+proc usage {} {
+    puts "usage: HOST USERID USER_PASSWORD ROOT_PASSWORD"
+    exit 1
+}
+set argc [llength $argv]
+if { $argc != 4 } {
+    usage
+}
+set timeout 3
+set HOST [lindex $argv 0]
+set USERID [lindex $argv 1]
+set USER_PASSWORD [lindex $argv 2]
+set ROOT_PASSWORD [lindex $argv 3]
+
+
+spawn ssh $USERID@$HOST -p 16215
+
+
+expect -re "No route" {
+            exit 1
+     } -re "try again" {
+            exit 1
+     } -re "yes/no" {
+            send "yes\r"
+            exp_continue
+     } -re "Password:" {
+            send "$USER_PASSWORD\r"
+            exp_continue
+     } -re  ">" {
+            send "sudo -s\r"
+     }
+expect ":" { send "$ROOT_PASSWORD\r" }
+sleep 1
+# root 로그인 후 실행시킬 명령어
+send "echo 'helloooo'\r"
+
+# 명령어가 실행된 후 자동으로 로그아웃
+expect "]" { send "exit\r" }
+expect ">" { send "exit\r" }
+interact
