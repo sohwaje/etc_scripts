@@ -1,4 +1,6 @@
 #!/usr/bin/expect
+
+# 사용법 출력
 proc usage {} {
     puts "usage: HOST USERID USER_PASSWORD ROOT_PASSWORD"
     exit 1
