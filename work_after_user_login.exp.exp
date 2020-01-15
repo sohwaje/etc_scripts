@@ -25,11 +25,11 @@ expect -re "No route" {
             send "$USER_PASSWORD\r"
             exp_continue
      }
-# 로그인 후 실행시킬 명령어
+# [1] 로그인 후 실행시킬 명령어
 send "echo 'helloooo'\r"
 send "cd /home/sigongweb/apps/bin\r"
 send "./api-run.sh start\r"
 
-# 명령어가 실행된 후 자동으로 로그아웃
+# [2] 명령어가 실행된 후 자동으로 로그아웃
 expect ">" { send "exit\r" }
 interact

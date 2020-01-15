@@ -3,7 +3,7 @@
 PROC_NAME="$(ls ../survey )"
 echo ${PROC_NAME}
 readonly DAEMON="/home/sigongweb/apps/survey/${PROC_NAME}"
-# 프로세스 아이디가 존재할 패스를 설정
+# [1]프로세스 아이디가 존재할 패스를 설정
 readonly PID_PATH="/home/sigongweb/apps/bin/"
 readonly PROC_PID="${PID_PATH}${PROC_NAME}.pid"
 
