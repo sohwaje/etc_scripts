@@ -3,11 +3,11 @@
 # 프로세스 명을 명시한다.
 # readonly PROC_NAME="winappdb"
 # war 파일 복사
-PROC_NAME="$(ls ../apps)"
+PROC_NAME="$(ls ../winappdb)"
 echo ${PROC_NAME}
-readonly DAEMON="/home/sigongweb/winappdb/apps/${PROC_NAME}"
+readonly DAEMON="/home/sigongweb/apps/winappdb/${PROC_NAME}"
 # 프로세스 아이디가 존재할 패스를 설정
-readonly PID_PATH="/home/sigongweb/winappdb/bin/"
+readonly PID_PATH="/home/sigongweb/apps/bin/"
 readonly PROC_PID="${PID_PATH}${PROC_NAME}.pid"
 
 # 시작 함수
@@ -19,7 +19,7 @@ start()
         echo "${PROC_NAME} is already running"
         exit 0
     fi
-    nohup java -jar -XX:MaxMetaspaceSize=512m -XX:MetaspaceSize=256m -Xms1024m -Xmx1024m -Dspring.profiles.active=dev "${DAEMON}" > /dev/null 2>&1 &
+    nohup java -jar -XX:MaxMetaspaceSize=512m -XX:MetaspaceSize=256m -Xms2048m -Xmx2048m -Dspring.profiles.active=dev "${DAEMON}" > /dev/null 2>&1 &
     local PID=${!}
 
     if [ -n ${PID} ]; then
