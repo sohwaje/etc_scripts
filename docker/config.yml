@@ -4,4 +4,4 @@ registry:
   readonly: false
   auth:
     enabled: false
-#docker run -it -d -p 48080:8080 --name registry-web --link registry -v /home/docker/docker_work/config.yaml:/conf/config.yml:ro hyper/docker-registry-web
+#docker run -it -d -p 48080:8080 --name registry-web --link registry -v /data/registry/config.yaml:/conf/config.yml:ro hyper/docker-registry-web
