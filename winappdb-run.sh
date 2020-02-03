@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# 프로세스 명을 명시한다.
 # readonly PROC_NAME="winappdb"
 # war 파일 복사
 PROC_NAME="$(ls ../winappdb)"
