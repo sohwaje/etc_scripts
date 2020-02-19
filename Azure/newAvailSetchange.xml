@@ -1,4 +1,4 @@
-## [주석 = #] 별 내용 확인하시고 순서대로 모두 진행하시기 바랍니다. 
+## [주석 = #] 별 내용 확인하시고 순서대로 모두 진행하시기 바랍니다.
 
 # 변수 설정 (가용성 집합을 변경할 가상머신의 리소스 그룹, 가상머신 이름, 사용할 가상머신 이름을 입력합니다.)
     $resourceGroup = "myResourceGroup"
@@ -42,7 +42,7 @@
        -VM $newVM -CreateOption Attach `
        -ManagedDiskId $originalVM.StorageProfile.OsDisk.ManagedDisk.Id `
        -Name $originalVM.StorageProfile.OsDisk.Name `
-       -Linux  OS가 윈도우일 경우 Windows로 변경해 줍니다.
+       -Linux -> OS가 윈도우일 경우 Windows로 변경해 줍니다.
 
 # 데이터 디스크 추가
 
