@@ -1,6 +1,6 @@
 #!/bin/sh
 RESULT="tmp.$$"
-./gitlab.sh | grep -E 'physicaldrive' | grep -v "grep" > $RESULT
+./gitlab1.sh | grep -E 'physicaldrive' | grep -v "grep" > $RESULT
 
 ##################### set html #####################
 echo "<meta http-equiv='refresh' content='5'>"
