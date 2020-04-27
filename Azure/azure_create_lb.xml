@@ -1,0 +1,40 @@
+## 시작 -> 실행 -> ISE
+## login-azaccount
+
+# 변수를 설정한다.
+###############################################
+$resourceGroup = "ISCREAM"
+$location = "koreacentral"
+$publicipaddressname = "TEST_PIP"
+$frontendconfig = "TEST_FRONTEDN_IP"
+$backendpoolconfig = "TEST_BACKENDPOOL"
+$lbname = "TEST_LOADBALANCER"
+
+# 리소스 그룹을 만든다.(리소스 그룹이 생성되어 있으면 이 부분은 생략)
+##################################################
+New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
+
+# 공용 IP 주소를 만든다.
+##################################################
+$publicIPAddress = New-AzPublicIpAddress `
+  -ResourceGroupName $resourceGroup `
+  -Location $location `
+  -AllocationMethod Static `
+  -Name $publicipaddressname
+
+# 프런트 엔드 IP 구성을 만든다.
+##################################################
+$FrontendIPConfig = New-AzLoadBalancerFrontendIpConfig -Name $frontendconfig -PublicIpAddress $publicIPAddress
+
+# 백 엔드 주소 풀 구성을 만든다.
+##################################################
+$BackendAddressPoolConfig = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendpoolconfig
+
+# 부하 분산 장치를 만든다.
+##################################################
+$loadBalancer = New-AzLoadBalancer `
+  -ResourceGroupName $resourceGroup `
+  -Name $lbname `
+  -Location $location `
+  -FrontendIpConfiguration $FrontendIPConfig `
+  -BackendAddressPool $BackendAddressPoolConfig
