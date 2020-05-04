@@ -2,7 +2,7 @@ version: '3'
 
 # MySQL DATA Volume 생성
 volumes:
-  mysql_data_dev: {}
+  mysqldata: {}
 
 services:
   mysql:
@@ -18,7 +18,7 @@ services:
        - MYSQL_USER=soudegesu
        - MYSQL_PASSWORD=soudegesu
     volumes:
-       - mysql_data_dev:/var/lib/mysql
+       - mysqldata:/var/lib/mysql
 
 
 #[1] docker-compose up -d
