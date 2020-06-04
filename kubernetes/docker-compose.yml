@@ -1,0 +1,8 @@
+version: '3'
+services:
+  hi-class-ui:
+    build: ./hiclassui
+    image: hi-class-ui
+    container_name: hi-class-ui
+    ports:
+        - "8080:80"
