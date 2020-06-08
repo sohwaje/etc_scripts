@@ -1,0 +1,4 @@
+kubectl create secret tls aks-ingress-tls \
+    --namespace ingress-basic \
+    --key aks-ingress-tls.key \
+    --cert aks-ingress-tls.crt
