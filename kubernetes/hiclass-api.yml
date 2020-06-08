@@ -34,7 +34,7 @@ spec:
             path: /
             port: 19081
             scheme: HTTP
-          initialDelaySeconds: 5
+          initialDelaySeconds: 20
           periodSeconds: 1
           timeoutSeconds: 1
         readinessProbe:
@@ -42,7 +42,7 @@ spec:
             path: /
             port: 19081
             scheme: HTTP
-          initialDelaySeconds: 3
+          initialDelaySeconds: 20
           timeoutSeconds: 1
 ---
 apiVersion: v1
@@ -54,6 +54,6 @@ spec:
   type: ClusterIP  # required ingress
   ports:
   - port: 80
-    targetPort: 19082
+    targetPort: 19081
   selector:
     app: hi-class-api
