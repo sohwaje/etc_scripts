@@ -21,7 +21,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: hi-class-ui
-        image: sigong.azurecr.io/hi-class-ui:latest
+        image: hiclass.azurecr.io/hi-class-ui:latest
         ports:
         - containerPort: 19082
         resources:
