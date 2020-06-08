@@ -51,6 +51,7 @@ metadata:
   name: hi-class-ui
 spec:
   type: LoadBalancer
+  #type: ClusterIP  # required ingress
   ports:
   - port: 80
     targetPort: 19082
