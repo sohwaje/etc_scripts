@@ -22,6 +22,7 @@ spec:
       containers:
       - name: hi-class-api
         image: hiclass.azurecr.io/hi-class-api:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 19081
         resources:
@@ -31,18 +32,18 @@ spec:
             cpu: 500m
         livenessProbe:
           httpGet:
-            path: /
+            path: /healthChecks
             port: 19081
             scheme: HTTP
-          initialDelaySeconds: 20
+          initialDelaySeconds: 40
           periodSeconds: 1
           timeoutSeconds: 1
         readinessProbe:
           httpGet:
-            path: /
+            path: /healthChecks
             port: 19081
             scheme: HTTP
-          initialDelaySeconds: 20
+          initialDelaySeconds: 40
           timeoutSeconds: 1
 ---
 apiVersion: v1
