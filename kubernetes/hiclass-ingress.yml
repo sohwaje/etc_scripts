@@ -5,7 +5,7 @@ metadata:
   namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"  # true/false
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
@@ -29,7 +29,7 @@ metadata:
   namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"  # true/false
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
