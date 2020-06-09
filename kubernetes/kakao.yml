@@ -1,121 +1,59 @@
 apiVersion: apps/v1
-
 kind: Deployment
-
 metadata:
-
   name: book-image-updater
-
   namespace: default
-
 spec:
-
   selector:
-
     matchLabels:
-
       app: book-image-updater-app
-
   replicas: 2
-
   template:
-
     metadata:
-
       labels:
-
         app: book-image-updater-app
-
     spec:
-
       containers:
-
         - name: book-image-updater
-
           image: idock.daumkakao.io/jadon_io/book-image-updater:dev
-
           imagePullPolicy: Always
-
           resources:
-
             requests:
-
               cpu: 1000m
-
               memory: 1000Mi
-
           ports:
-
             - containerPort: 8080
 
 
-
-
 ---
-
-
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
   name: book-image-updater-svc
-
   namespace: default
-
 spec:
-
   ports:
-
     - port: 80
-
       protocol: TCP
-
       targetPort: 8080
-
   selector:
-
     app: book-image-updater-app
 
 
-
-
 ---
-
-
-
-
 apiVersion: extensions/v1beta1
-
 kind: Ingress
-
 metadata:
-
   name: book-image-updater-ingress
-
   namespace: default
-
   annotations:
-
     ingress.kubernetes.io/rewrite-target: /
-
 spec:
-
   rules:
-
     - host: book-image-updater-dev.dev.daumkakao.io
-
       http:
-
         paths:
-
           - path: /
-
             backend:
-
               serviceName: book-image-updater-svc
-
               servicePort: 80
