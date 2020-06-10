@@ -1,43 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: hi-class-ui-ingress
-  namespace: ingress-basic
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    # nginx.ingress.kubernetes.io/ssl-redirect: "false"  # TLS를 사용할 경우 주석처리
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  tls:
-  - hosts:
-    - kube.hiclass.net
-    secretName: aks-ingress-tls
-  rules:
-  - host: kube.hiclass.net
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: hi-class-ui
-          servicePort: 80
-
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
   name: hi-class-api-ingress
   namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
-    # nginx.ingress.kubernetes.io/ssl-redirect: "false"  # TLS를 사용할 경우 주석처리
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
   - hosts:
-    - kubeapi.hiclass.net
+    - api.hiclass.net
     secretName: aks-ingress-tls
   rules:
-  - host: kubeapi.hiclass.net
+  - host: api.hiclass.net
     http:
       paths:
       - path: /
