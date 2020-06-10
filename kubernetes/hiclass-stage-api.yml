@@ -27,24 +27,26 @@ spec:
         - containerPort: 19081
         resources:
           requests:
-            cpu: 250m
+            cpu: 500m
           limits:
             cpu: 500m
         livenessProbe:
           httpGet:
-            path: /
+            path: /healthChecks
             port: 19081
             scheme: HTTP
           initialDelaySeconds: 150
-          periodSeconds: 1
-          timeoutSeconds: 1
+          periodSeconds: 3
+          timeoutSeconds: 10
         readinessProbe:
           httpGet:
-            path: /
+            path: /healthChecks
             port: 19081
             scheme: HTTP
           initialDelaySeconds: 150
-          timeoutSeconds: 1
+          periodSeconds: 3
+          timeoutSeconds: 10
+
 ---
 apiVersion: v1
 kind: Service
