@@ -1,5 +1,5 @@
 #!/bin/sh
-# 로그의 특정 메시지가 기준치 이상으로 찍히면 SLACK으로 Alert 메세지를 보냅니다.
+# 로그의 특정 메시지가 기준치 이상으로 반복해서 찍히면 SLACK으로 Alert 메세지를 보냅니다.
 #LOG file
 LOG="/home/sigongweb/apps/logs/hi-class-file.log.2020-06-14.5"
 # Slack 주소
