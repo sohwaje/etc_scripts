@@ -1,7 +1,7 @@
 #!/bin/sh
 USERID="sigongweb"
-USER_PASSWORD="sigongweb!@#"
-ROOT_PASSWORD="tlrhdaleldj!@#"
+USER_PASSWORD="!@#"
+ROOT_PASSWORD="!@#"
 HOST="gitlab"
 expect <<EOF
 set timeout 20
