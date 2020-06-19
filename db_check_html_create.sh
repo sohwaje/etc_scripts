@@ -1,7 +1,7 @@
 #!/bin/sh
 #TITLE:SCMSDB_check.sh
 DBUSER="root"
-DBPASS="!#SI0aleldj*)"
+DBPASS=""
 MYSQL="/usr/local/mysql/bin"
 IPADDR="10.1.0.29"
 RESULT="tmp.$$"
