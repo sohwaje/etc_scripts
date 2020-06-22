@@ -1,0 +1,662 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>HI-Class-VM</title>
+         <meta name="application-name" content="netdata">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:image" content="https://my-netdata.io/images/seo-performance-512.png"/>
+        <meta property="og:url" content="http://my-netdata.io/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:site_name" content="netdata"/>
+        <meta property="og:title" content="실시간 성능 모니터링!"/>
+        <meta property="og:description" content="Stunning real-time dashboards, blazingly fast and extremely interactive. Zero configuration, zero dependencies, zero maintenance." />
+
+</head>
+<script>
+var netdataTheme = 'slate'; // this is dark
+var netdataServer = 'http://10.1.10.5:19999/';
+</script>
+
+<script type="text/javascript" src="http://10.1.10.5:19999/dashboard.js"></script>
+
+<script>
+
+NETDATA.options.current.destroy_on_hide = true;
+NETDATA.options.current.eliminate_zero_dimensions = true;
+
+NETDATA.options.current.concurrent_refreshes = false;
+
+NETDATA.options.current.parallel_refresher = true;
+
+NETDATA.options.current.stop_updates_when_focus_is_lost = false;
+
+var RELOAD_EVERY = 5;
+setTimeout(function(){
+    location.reload();
+}, RELOAD_EVERY * 60 * 1000);
+</script>
+
+<style>
+    body {
+        font-size: 1vw;
+    }
+
+    .mysparkline {
+        position: relative;
+        display: inline-block;
+        min-height: 50px;
+        width: 100%;
+        height: 7vmax;
+        text-align: left;
+    }
+
+    .mysparkline-overchart-label {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 10px;
+        bottom: 0;
+        right: 0;
+        font-size: 1vmax;
+        z-index: 1;
+    }
+
+    .mysparkline-overchart-value {
+        position: absolute;
+        display: block;
+        top: 1.1vmax;
+        left: 10px;
+        bottom: 0;
+        right: 0;
+        font-size: 5vmax;
+        z-index: 2;
+        text-shadow: #333 0px 0px 2px;
+    }
+
+    .myfullchart {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: 12vmax;
+        min-height: 150px;
+        text-align: left;
+    }
+
+    .mygauge-combo {
+        display: inline-block;
+    }
+
+    .mygauge {
+        position: relative;
+        display: block;
+        width: 18vw;
+        height: 11vw;
+    }
+
+    .mygauge-button {
+        display: block;
+    }
+
+    .mytitle {
+        padding-top: 6vw;
+        padding-bottom: 1vw;
+        text-align: center;
+        font-size: 2.4vw;
+    }
+
+    .mysubtitle {
+        padding-top: 2vw;
+        padding-bottom: 1vw;
+        text-align: center;
+        font-size: 1.8vw;
+    }
+
+    .mycontent {
+        text-align: center;
+        font-size: 1.5vw;
+    }
+
+    @media only screen and (min-width : 992px) {
+        .container {
+            width: 80%;
+        }
+    }
+    @media only screen and (max-width : 992px) {
+        .container {
+            width: 100%;
+        }
+    }
+</style>
+
+<br>
+<b><font size=6pt>HiClass_CPU</font></b> 
+<body style="text-align: center; background-color: #272b30;">
+<div style="width: 100%; height: calc(100% - 15px); text-align: center; display: inline-block;">
+
+                                <div data-netdata="system.cpu"
+                                data-host="http://10.1.0.4:19999/"
+                                data-title="front1_CPU"
+                                data-dimensions="user"
+                                data-chart-library="gauge"
+                                data-after="-300"
+                                data-points="300"
+                                data-width="8%"
+                                data-colors="#FF5555"
+                                ></div>
+
+                                <div data-netdata="system.cpu"
+                                data-host="http://10.1.0.5:19999/"
+                                data-title="front2_CPU"
+                                data-dimensions="user"
+                                data-chart-library="gauge"
+                                data-after="-300"
+                                data-points="300"
+                                data-width="8%"
+                                data-colors="#FF5555"
+                                ></div>
+
+                                <div data-netdata="system.cpu"
+                                data-host="http://10.1.0.15:19999/"
+                                data-title="Crawler_CPU"
+                                data-dimensions="user"
+                                data-chart-library="gauge"
+                                data-after="-300"
+                                data-points="300"
+                                data-width="8%"
+                                data-colors="#FF5555"
+                                ></div>
+
+                                <div data-netdata="system.cpu"
+                                data-host="http://10.1.0.8:19999/"
+                                data-title="chat01_CPU"
+                                data-dimensions="user"
+                                data-chart-library="gauge"
+                                data-after="-300"
+                                data-points="300"
+                                data-width="8%"
+                                data-colors="#FF5555"
+                                ></div>
+
+                                <div data-netdata="system.cpu"
+                                data-host="http://10.1.0.9:19999/"
+                                data-title="chat02_CPU"
+                                data-dimensions="user"
+                                data-chart-library="gauge"
+                                data-after="-300"
+                                data-points="300"
+                                data-width="8%"
+                                data-colors="#FF5555"
+                                ></div>
+
+                                <div data-netdata="system.cpu"
+                                data-host="http://10.1.0.13:19999/"
+                                data-title="upload01_CPU"
+                                data-dimensions="user"
+                                data-chart-library="gauge"
+                                data-after="-300"
+                                data-points="300"
+                                data-width="8%"
+                                data-colors="#FF5555"
+                                ></div>
+
+                                <div data-netdata="system.cpu"
+                                data-host="http://10.1.0.14:19999/"
+                                data-title="upload02_CPU"
+                                data-dimensions="user"
+                                data-chart-library="gauge"
+                                data-after="-300"
+                                data-points="300"
+                                data-width="8%"
+                                data-colors="#FF5555"
+                                ></div>
+
+                                <div data-netdata="system.cpu"
+                                data-host="http://10.1.0.10:19999/"
+                                data-title="MQ_CPU"
+                                data-dimensions="user"
+                                data-chart-library="gauge"
+                                data-after="-300"
+                                data-points="300"
+                                data-width="8%"
+                                data-colors="#FF5555"
+                                ></div>
+
+                                <div data-netdata="system.cpu"
+                                data-host="http://10.1.0.11:19999/"
+                                data-title="E-letter01_CPU"
+                                data-dimensions="user"
+                                data-chart-library="gauge"
+                                data-after="-300"
+                                data-points="300"
+                                data-width="8%"
+                                data-colors="#FF5555"
+                                ></div>
+
+                                <div data-netdata="system.cpu"
+                                data-host="http://10.1.0.12:19999/"
+                                data-title="E-letter02_CPU"
+                                data-dimensions="user"
+                                data-chart-library="gauge"
+                                data-after="-300"
+                                data-points="300"
+                                data-width="8%"
+                                data-colors="#FF5555"
+                                ></div>
+
+</div>
+
+<br>
+<br>
+<b><font size=6pt>HiClass_Memory</font></b>  
+<body style="text-align: center; background-color: #272b30;">
+<div style="width: 100%; height: calc(100% - 15px); text-align: center; display: inline-block;">
+
+
+                                        <div data-netdata="system.ram"
+                                        data-host="http://10.1.0.4:19999"
+                                        data-title="front01_MEM"
+                                        data-append-options="percentage"
+                                        data-dimensions="used|buffers|active|wired"
+                                        data-colors="#FFFFCC"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-easypiechart-max-value="100"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-host="http://10.1.0.5:19999"
+                                        data-title="front02_MEM"
+                                        data-append-options="percentage"
+                                        data-dimensions="used|buffers|active|wired"
+                                        data-colors="#FFFFCC"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-easypiechart-max-value="100"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-host="http://10.1.0.15:19999"
+                                        data-title="Crawler_MEM"
+                                        data-append-options="percentage"
+                                        data-dimensions="used|buffers|active|wired"
+                                        data-colors="#FFFFCC"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-easypiechart-max-value="100"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-host="http://10.1.0.8:19999"
+                                        data-title="chat01_MEM"
+                                        data-append-options="percentage"
+                                        data-dimensions="used|buffers|active|wired"
+                                        data-colors="#FFFFCC"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-easypiechart-max-value="100"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-host="http://10.1.0.9:19999"
+                                        data-title="chat02_MEM"
+                                        data-append-options="percentage"
+                                        data-dimensions="used|buffers|active|wired"
+                                        data-colors="#FFFFCC"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-easypiechart-max-value="100"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-host="http://10.1.0.13:19999"
+                                        data-title="upload01_MEM"
+                                        data-append-options="percentage"
+                                        data-dimensions="used|buffers|active|wired"
+                                        data-colors="#FFFFCC"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-easypiechart-max-value="100"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-host="http://10.1.0.14:19999"
+                                        data-title="upload02_MEM"
+                                        data-append-options="percentage"
+                                        data-dimensions="used|buffers|active|wired"
+                                        data-colors="#FFFFCC"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-easypiechart-max-value="100"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-host="http://10.1.0.10:19999"
+                                        data-title="MQ_MEM"
+                                        data-append-options="percentage"
+                                        data-dimensions="used|buffers|active|wired"
+                                        data-colors="#FFFFCC"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-easypiechart-max-value="100"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-host="http://10.1.0.11:19999"
+                                        data-title="E-letter01_MEM"
+                                        data-append-options="percentage"
+                                        data-dimensions="used|buffers|active|wired"
+                                        data-colors="#FFFFCC"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-easypiechart-max-value="100"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+                                        <div data-netdata="system.ram"
+                                        data-host="http://10.1.0.12:19999"
+                                        data-title="E-letter02_MEM"
+                                        data-append-options="percentage"
+                                        data-dimensions="used|buffers|active|wired"
+                                        data-colors="#FFFFCC"
+                                        data-units="%"
+                                        data-chart-library="easypiechart"
+                                        data-easypiechart-max-value="100"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        ></div>
+
+</div>
+
+
+<br>
+<br>
+ <b><font size=6pt>HiClass_Disk Read</font></b>  
+<body style="text-align: center; background-color: #272b30;">
+<div style="width: 100%; height: calc(100% - 15px); text-align: center; display: inline-block;">
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.4:19999"
+                                        data-title="front01"
+                                        data-dimensions="in"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FF82FF"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.5:19999"
+                                        data-title="front02"
+                                        data-dimensions="in"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FF82FF"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.15:19999"
+                                        data-title="Crawler"
+                                        data-dimensions="in"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FF82FF"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.8:19999"
+                                        data-title="chat01"
+                                        data-dimensions="in"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FF82FF"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.9:19999"
+                                        data-title="chat02"
+                                        data-dimensions="in"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FF82FF"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.13:19999"
+                                        data-title="upload01"
+                                        data-dimensions="in"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FF82FF"
+                                        ></div>
+
+                                       <div data-netdata="system.io"
+                                        data-host="http://10.1.0.14:19999"
+                                        data-title="upload02"
+                                        data-dimensions="in"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FF82FF"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.10:19999"
+                                        data-title="MQ"
+                                        data-dimensions="in"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FF82FF"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.11:19999"
+                                        data-title="E-letter01"
+                                        data-dimensions="in"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FF82FF"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.12:19999"
+                                        data-title="E-letter02"
+                                        data-dimensions="in"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FF82FF"
+                                        ></div>
+
+
+</div>
+
+<br>
+<br>
+ <b><font size=6pt>HiClass_Disk Write</font></b>  
+<body style="text-align: center; background-color: #272b30;">
+<div style="width: 100%; height: calc(100% - 15px); text-align: center; display: inline-block;">
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.4:19999"
+                                        data-title="front01"
+                                        data-dimensions="out"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FAEB78"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.5:19999"
+                                        data-title="front02"
+                                        data-dimensions="out"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FAEB78"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.15:19999"
+                                        data-title="Crawler"
+                                        data-dimensions="out"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FAEB78"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.8:19999"
+                                        data-title="chat01"
+                                        data-dimensions="out"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FAEB78"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.9:19999"
+                                        data-title="chat02"
+                                        data-dimensions="out"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FAEB78"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.13:19999"
+                                        data-title="upload01"
+                                        data-dimensions="out"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FAEB78"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.14:19999"
+                                        data-title="upload02"
+                                        data-dimensions="out"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FAEB78"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.10:19999"
+                                        data-title="MQ"
+                                        data-dimensions="out"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FAEB78"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.11:19999"
+                                        data-title="E-letter01"
+                                        data-dimensions="out"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FAEB78"
+                                        ></div>
+
+                                        <div data-netdata="system.io"
+                                        data-host="http://10.1.0.12:19999"
+                                        data-title="E-letter02"
+                                        data-dimensions="out"
+                                        data-units="KB / s"
+                                        data-chart-library="easypiechart"
+                                        data-after="-300"
+                                        data-points="300"
+                                        data-width="8%"
+                                        data-colors="#FAEB78"
+                                        ></div>
+</div>
+</body>
+</html>
