@@ -7,7 +7,7 @@ LOG="/home/sigongweb/apps/logs/hi-class-file.log"
 NUM=$(tail -n 20 $LOG | grep 'scheduling-1' | wc -l)
 
 # Slack 주소
-WEBHOOK_ADDRESS='https://hooks.slack.com/services/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'
+WEBHOOK_ADDRESS=''
 
 # 날짜
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
