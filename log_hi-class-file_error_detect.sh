@@ -24,9 +24,15 @@ function slack_message(){
     curl -s -d 'payload={"attachments":[{"color":"'"$COLOR"'","pretext":"<!channel> *hi-class-file*","text":"*HOST* : '"$HOSTNAME"' \n*MESSAGE* : '"$1"'"}]}' $WEBHOOK_ADDRESS > /dev/null 2>&1
 }
 
-# json 형식의 ALERT 메시지
-ALERT_TEXT="{\"text\": \"MSG: scheduling Error Date:  $DATE\"}"
+# 정기적인 Alert 메시지를 보내는 함수
+function regular_alert_message(){
+  BDATE=`echo $DATE | awk '{print $2}' | awk -F ':' '{print $1":"$2}'`
+  ADATE="08:00"
 
+if [ "$BDATE" == "$ADATE" ]; then
+  slack_message "$HOSTNAME NOW 08:00 " true
+fi
+}
 
 # 임시 파일 삭제
 rm -f log.tmp
@@ -42,3 +48,5 @@ else
   echo "Normal : $NUM | DATE: $DATE"
   exit 1
 fi
+
+regular_alert_message
