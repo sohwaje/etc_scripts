@@ -35,9 +35,6 @@ fi
 }
 regular_alert_message
 
-# 임시 파일 삭제
-rm -f log.tmp
-
 # 특정 로그 파일이 연속해서 10개 이상 찍히면 Slack으로 알림 전송
 if [ $NUM -gt 10 ]; then
 #if [ $NUM -ne 10 ]; then
