@@ -33,6 +33,7 @@ if [ "$BDATE" == "$ADATE" ]; then
   slack_message "$HOSTNAME NOW 08:00 " true
 fi
 }
+regular_alert_message
 
 # 임시 파일 삭제
 rm -f log.tmp
@@ -49,4 +50,4 @@ else
   exit 1
 fi
 
-regular_alert_message
+
