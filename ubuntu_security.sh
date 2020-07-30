@@ -127,6 +127,7 @@ set_acl_su() {
   echo 'Done'
 }
 
+# 실행
 set_disablerootlogin
 set_commonauth
 set_passwordmaxdays
