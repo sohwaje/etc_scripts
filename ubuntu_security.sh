@@ -9,28 +9,28 @@ export  DATE=`date +%Y%m%d`
 
 set_disablerootlogin() {
   echo '[1]Root login Yes -> No'
-  sed -i 's/^PermitRootLogin prohibit-password$/PermitRootLogin no/' /etc/ssh/sshd_config
+  sudo sed -i 's/^PermitRootLogin prohibit-password$/PermitRootLogin no/' /etc/ssh/sshd_config
   sleep 1
   echo 'Done'
 }
 
 set_commonauth() {
   echo '[2]/etc/pam.d/common-auth setting'
-  echo 'auth required /lib/security/pam_tally.so deny=5 unlock_time=120' >> /etc/pam.d/common-auth
+  sudo echo 'auth required /lib/security/pam_tally.so deny=5 unlock_time=120' >> /etc/pam.d/common-auth
   sleep 1
   echo 'Done'
 }
 
 set_passwordmaxdays() {
-  echo 'change password max days'“wheel” 그룹(su 명령어 사용 그룹) 및 그룹 내 구성원 존재 여부 확인
-  echo 'PASS_MAX_DAYS 90' >> /etc/login.defs
+  echo 'change password max days'
+  sudo echo 'PASS_MAX_DAYS 90' >> /etc/login.defs
   sleep 1
   echo 'Done'
 }
 
 set_umask() {
   echo 'change umask'
-  echo 'umask 002' >> /etc/profile
+  sudo echo 'umask 002' >> /etc/profile
   sleep 1
   echo 'Done'
 }
@@ -42,24 +42,13 @@ set_sessiontimeout() {
   echo 'Done'
 }
 
-set_motd() {
-  echo 'set /etc/motd'
-  echo 'MSG' > /etc/motd
-  sleep 1
-  echo 'Done'
-}
-
-set_issue() {
-  echo 'set /etc/issue.net'
-  echo 'MSG~' > /etc/issue.net
-  sleep 1
-  echo 'Done'
-}
-
 set_banner() {
-  echo 'set banner'
-  echo 'Banner MSG' >> /etc/ssh/ssh_config
-  sleep 1
+  echo 'set /etc/motd'
+  cat ubuntu_templates/motd > /etc/motd
+  cat ubuntu_templates/motd > /etc/issue
+  cat ubuntu_templates/motd > /etc/issue.net
+  echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
+  systemctl restart sshd
   echo 'Done'
 }
 
@@ -85,13 +74,14 @@ set_etcshadow() {
   echo 'Done'
 }
 
+# setuid, setgid 스케쥴링 설정
 set_suidsgid() {
   echo 'find SUID, SGID or Sticky bit'
-  find / -user root -type f \( -perm -04000 -o -perm -02000 \) -xdev -exec ls -al {} \; >> ~/suidsgid.txt
+  crontab -l | { cat; echo "5 * * * * sh ubuntu_templates/find_setuid_gid.sh"; } | crontab -
   sleep 1
   echo 'Done'
 }
-# 주기적으로 애플리케이션 또는 사용자가 임의로 생성한 파일 등 의심스럽거나 특이한 파일을 확인하여 SUID 권한 또는 파일 제거
+
 
 set_logdirperm() {
   echo '시스템 로그 파일의 권한을 644로 변경'
@@ -100,8 +90,24 @@ set_logdirperm() {
   echo 'Done'
 }
 
-set_acl_su() {
+set_gccperm() {
+  echo 'change gcc exec perm'
+  chmod 100 /usr/bin/x86_64-linux-gnu-gcc*
+  echo 'Done'
+}
 
+set_worldwritable() {
+  echo 'find wolrd writable file'
+  find /home -perm -2 -ls >> ~/wwritable_home
+  find /tmp -perm -2 -ls >> ~/wwritable_tmp
+  find /etc -perm -2 -ls >> ~/wwritable_etc
+  find /var -perm -2 -ls >> ~/wwritable_var
+}
+
+set_acl_su() {
+  echo 'change perm /bin/su'
+  sudo chmod 4750 /bin/suset_acl_su
+  echo 'Done'
 }
 
 set_disablerootlogin
@@ -109,12 +115,13 @@ set_commonauth
 set_passwordmaxdays
 set_umask
 set_sessiontimeout
-set_motd
-set_issue
 set_banner
 set_find_hiddenfile
 set_crontab_perm
+set_suidsgid
 set_etcshadow
 set_logdirperm
+set_gccperm
+set_acl_su
 
 echo "Server Setting Processes end"
