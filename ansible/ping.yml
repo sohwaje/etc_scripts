@@ -1,6 +1,0 @@
----
-- hosts: all
-  remote_user: sigongweb
-  tasks:
-  - name: ping test gogogo
-    ping:
